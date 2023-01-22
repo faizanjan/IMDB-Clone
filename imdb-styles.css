@@ -1,0 +1,39 @@
+/* NAVIGATION */
+#logo{
+    width: 70px;
+}
+
+#search-field{
+    height:30px;
+}
+
+element.style {
+    color: white;
+}
+#search-field {
+    height: 2rem;
+    /* width: 20rem; */
+    min-width: 110px;
+    max-width: 500px;
+    border: none;
+}
+form{
+    padding: 9px 4px 9px 40px;
+}
+
+#nav-options{
+    border-left: 1px solid grey;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+/* SEARCH RESULT */
+
+#movie-card{
+    background-image: linear-gradient(to right, rgb(255, 204, 0),rgb(0, 0, 0, 0.5) 150%);
+    box-shadow: 0 1px 55px 2px rgba(228, 181, 86, 0.568);
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 10px;
+}
