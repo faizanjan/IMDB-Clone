@@ -40,6 +40,11 @@ a:hover{
 
 /* FAVORITE MOVIE PAGE */
 
+.fav-movie-item .release-date, .fav-movie-item .card-title{
+    transition: all 0.5s !important;
+}
+
+
 .fav-movie-item:hover{
     background-image: linear-gradient(rgb(255,193,7), rgb(0, 0, 0,0.5)) !important;
     font-size: 1.3rem;
