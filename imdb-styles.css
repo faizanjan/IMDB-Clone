@@ -37,3 +37,19 @@ a:hover{
     border: 3px solid rgb(255, 255, 255);
     border-radius: 10px;
 }
+
+/* FAVORITE MOVIE PAGE */
+
+.fav-movie-item:hover{
+    background-image: linear-gradient(rgb(255,193,7), rgb(0, 0, 0,0.5)) !important;
+    font-size: 1.3rem;
+}
+.fav-movie-item:hover .release-date{
+    color:white !important;
+}
+.fav-movie-item:hover .card-title{
+    font-size: 2.5rem !important;
+    color: black !important;
+    border-bottom: 1px solid black;
+    margin-top: -3px !important;
+}

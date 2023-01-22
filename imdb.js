@@ -10,6 +10,8 @@ async function fetchMovies(movieName) {
     return movie;
 }
 
+searchField.addEventListener("keydown", handleSearch);
+
 async function handleSearch(event) {
     if (event.key === "Enter") {
         let resultMovie = await fetchMovies(searchField.value);
@@ -30,8 +32,9 @@ async function handleSearch(event) {
                             </div>
                             <div class="col-md-7 m-2">
                                 <div class="card-body d-flex flex-column justify-content-around align-items-around h-100">
-                                    <i id="add-to-fav" class="fa-regular text-light fa-heart mt-1 mb-3 fs-3 align-self-end"></i>
-                                    <h1 class="card-title">${resultMovie.Title}</h1>
+                                
+                                <i id="add-to-fav" title="Add to Favorites" class="fa-regular text-light fa-heart mt-1 mb-3 fs-3 align-self-end"></i>
+                                <h1 class="card-title">${resultMovie.Title}</h1>
                                     <span class="card-text d-flex flex-column justify-content-center">
                                         <p class="release-date text-light fs-4">
                                             ${resultMovie.Year}
@@ -48,54 +51,57 @@ async function handleSearch(event) {
             main.appendChild(showResult);
 
             // HANDLING FAVORITE BUTTON
-            let addToFav = document.getElementById("add-to-fav");
+            let addToFavBtn = document.getElementById("add-to-fav");
+            
+            addToFavBtn.addEventListener("mouseover", mouseInOnFav)
+            function mouseInOnFav() {
+                addToFavBtn.classList.remove("fa-regular");
+                addToFavBtn.classList.add("fa-solid");
+            }
+            
+            addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
+            function mouseOutOnFav() {
+                addToFavBtn.classList.remove("fa-solid");
+                addToFavBtn.classList.add("fa-regular");
+            }
+            
             let isFav = false;
             for (let m of favorites) { //check if the movie is already in favorites
                 if ((m.imdbID === resultMovie.imdbID)) {
                     isFav = true;
-                    addToFav.removeEventListener("mouseout", mouseOutOnFav)
-                    addToFav.classList.remove("fa-regular");
-                    addToFav.classList.add("fa-solid");
+                    addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
+                    addToFavBtn.classList.remove("fa-regular");
+                    addToFavBtn.classList.add("fa-solid");
                 }
             }
 
-            addToFav.addEventListener("mouseover", mouseInOnFav)
-            function mouseInOnFav() {
-                addToFav.classList.remove("fa-regular");
-                addToFav.classList.add("fa-solid");
-            }
-
-            addToFav.addEventListener("mouseout", mouseOutOnFav)
-            function mouseOutOnFav() {
-                addToFav.classList.remove("fa-solid");
-                addToFav.classList.add("fa-regular");
-            }
-
-            addToFav.addEventListener("click", onClickingFav)
+            addToFavBtn.addEventListener("click", onClickingFav)
             function onClickingFav() {
-                isFav=!isFav;                
-                if (!isFav) {
+                if (!isFav) { // if the movie is not in favorites
                     alert("Added to favorites")
                     // CHANGING BUTTON APPEARANCE
-                    addToFav.removeEventListener("mouseout", mouseOutOnFav)
-                    addToFav.classList.remove("fa-regular");
-                    addToFav.classList.add("fa-solid");
+                    addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
+                    addToFavBtn.classList.remove("fa-regular");
+                    addToFavBtn.classList.add("fa-solid");
 
                     // ACTUALLY ADDING TO FAVORITES
                     favorites.push(resultMovie);
                     localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
                 }
-                else {
+                else { // if the movie is already in favorites
                     // CHANGING BUTTON APPEARANCE
-                    addToFav.addEventListener("mouseout", mouseOutOnFav)
-                    addToFav.classList.add("fa-regular");
-                    addToFav.classList.remove("fa-solid");
-    
+                    addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
+                    addToFavBtn.classList.add("fa-regular");
+                    addToFavBtn.classList.remove("fa-solid");
+
                     // ACTUALLY ADDING TO FAVORITES
                     favorites = favorites.filter(movie => movie.imdbID!==resultMovie.imdbID);
                     localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
                 }
+                isFav=!isFav;                
             }
+
+
         }
 
         // IF THE MOVIE IS NOT FOUND
@@ -109,55 +115,39 @@ async function handleSearch(event) {
     }
 }
 
-searchField.addEventListener("keydown", handleSearch);
+//FAVORITES
+let list = document.getElementById("fav-list")
+let movieNames =[];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// (async function setCarousal() {
-//     let carousal1 = await fetchMovies("avatar");
-//     let carousal2 = await fetchMovies("glass onion");
-//     let carousal3 = await fetchMovies("the last of us");
-//     let carousal = [carousal1, carousal2, carousal3];
-//     let carousalImage = document.getElementsByClassName("carousal-image");
-//     let carousalTitle = document.getElementsByClassName("carousal-title");
-//     let DetailTitle = document.getElementsByClassName("carousal-detail");
-//     for (let i = 0; i < carousal.length; i++) {
-//         console.log(i, carousal[i].Poster);
-//         carousalImage[i].setAttribute("src", carousal[i].Poster);
-//         carousalTitle[i].innerText=carousal[i].Title;
-//     }
-// })();
-// console.log(carousal1, carousal2, carousal3);
-
+for(let m of favorites){
+    let li = document.createElement("li");
+    li.innerHTML=`
+    <li class="text-light ">
+        <div class="card m-3 ">
+            <div class="row g-0 d-flex fav-movie-item bg-dark justify-content-between align-items-center">
+                <div class="image-container col-md-2 d-flex align-items-center"
+                    style="width: 10%;">
+                    <a class="position-relative play-on-hover play" href="#">
+                        <img class="img-fluid queue-img img-fluid rounded-start"
+                            src="${m.Poster}"
+                            alt="Poster Not Available" />
+                    </a>
+                </div>
+                <div class="col-8 ">
+                    <div class="card-body d-flex flex-column p-1">
+                        <p class="card-title text-light fw-bold fs-3 align-self-start">${m.Title}</p>
+                        <span class="card-text d-flex justify-content-between">
+                            <small class="release-date text-muted fs-4">
+                                ${m.Year}
+                            </small>
+                        </span>
+                    </div>
+                </div>
+                <i class="col-1 fa-solid fa-xmark text-light delete-fav"></i>
+            </div>
+        </div>
+    </li>
+    `;
+    list.appendChild(li);
+    movieNames.push(m.Title);
+}

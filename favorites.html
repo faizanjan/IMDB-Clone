@@ -10,7 +10,105 @@
         <script src="https://kit.fontawesome.com/a1085fbeac.js" crossorigin="anonymous"></script>
         <title>Favorites</title>
     </head>
-<body class="d-flex align-items-center justify-content-center vh-100 fs-1 bg-warning fw-bolder">
-    THIS PAGE IS UNDER DEVELOPMENT
+<body class="bg-dark">
+    <nav id="nav-bar" class="d-flex bg-darkvw-100 ">
+        <div class="nav-container m-auto d-flex align-items-center justify-content-around my-2 w-75">
+
+            <!-- logo  -->
+            <a href="homepage.html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" id="logo" alt="logo">
+            </a>
+            <!-- menu button  -->
+            <button id="menu" class="btn btn-dark ps-3 m-2 d-flex align-items-center" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                <i class="fa-solid fa-bars bg-dark mx-2"></i>
+                <span class="fw-bold">Menu</span>
+            </button>
+            <!-- off canvas menu (not functional) -->
+            <div class="offcanvas offcanvas-top bg-dark vh-100" tabindex="-1" id="offcanvasTop"
+                aria-labelledby="offcanvasTopLabel">
+                <div class="offcanvas-header w-75 m-auto">
+                    <h5 class="offcanvas-title" id="offcanvasTopLabel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" id="logo"
+                            alt="logo">
+                    </h5>
+                    <button type="button" class="btn-close"
+                        style="background-color: rgb(245,197,24); border-radius: 50%;" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body bg-dark text-warning text-center fs-1 fw-bolder">
+                    This feature was not required for this project
+                </div>
+            </div>
+
+            <!-- search field  -->
+            <input class="form-control  mt-1 d-inline-flex flex-grow-1 text-dark" id="search-field"
+                placeholder="Search IMDb" disabled style="color: white;" />
+            <div id="suggestion-box">
+                <ul id="suggestions">
+
+                </ul>
+            </div>
+
+
+            <!-- more navigation buttons -->
+            <div id="nav-options" class="d-flex p-0">
+
+                <!-- favorites -->
+                <a id="menu" href="favorites.html" class="btn btn-warning ps-3 m-2 d-flex align-items-center">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+                        class="ipc-icon ipc-icon--watchlist ipc-btn__icon ipc-btn__icon--pre" id="iconContext-watchlist"
+                        viewBox="0 0 24 24" fill="currentColor" role="presentation">
+                        <path
+                            d="M17 3c1.05 0 1.918.82 1.994 1.851L19 5v16l-7-3-7 3V5c0-1.05.82-1.918 1.851-1.994L7 3h10zm-4 4h-2v3H8v2h3v3h2v-3h3v-2h-3V7z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <span class="fw-bold">Favorites</span>
+                </a>
+
+                <!-- login  (not functional) -->
+                <button id="login" class="btn btn-dark ps-3 m-2 d-flex align-items-center">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="fw-bold ms-2">Login</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+        <ul id="fav-list" class="mt-4 m-auto list-unstyled w-75">
+            <h1 id="fav-heading" class="text-warning">Favorites</h1>
+
+            <!-- <li class="text-light ">
+                <div class="card m-3">
+                    <div class="row g-0 d-flex bg-dark justify-content-between align-items-center">
+                        <div class="image-container col-md-2 d-flex align-items-center"
+                            style="width: 8%;">
+                            <a class="position-relative play-on-hover play" href="#">
+                                <img class="img-fluid queue-img img-fluid rounded-start"
+                                    src=""
+                                    alt="..." />
+                            </a>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body d-flex flex-column p-1">
+                                <p class="card-title text-light fw-bold align-self-start">Movie Name</p>
+                                <span class="card-text d-flex justify-content-between">
+                                    <small class="release-date text-muted">
+                                        Release date
+                                    </small>
+                                </span>
+                            </div>
+                        </div>
+                        <i class="col-1 fa-solid fa-xmark text-light delete-fav"></i>
+                    </div>
+                </div>
+            </li> -->
+
+        </ul>
+    </main>
+
+    <script src="imdb.js"></script>
 </body>
 </html>
