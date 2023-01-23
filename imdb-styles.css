@@ -37,13 +37,19 @@ a:hover{
     border: 3px solid rgb(255, 255, 255);
     border-radius: 10px;
 }
+.goToMov>p, .goToMov>h1 {
+    transition: all 0.5s;
+}
+.goToMov:hover>p, .goToMov:hover>h1 {
+    /* text-decoration: underline; */
+    font-size: 3rem;
+}
 
 /* FAVORITE MOVIE PAGE */
 
 .fav-movie-item .release-date, .fav-movie-item .card-title{
     transition: all 0.5s !important;
 }
-
 
 .fav-movie-item:hover{
     background-image: linear-gradient(rgb(255,193,7), rgb(0, 0, 0,0.5)) !important;
@@ -52,9 +58,30 @@ a:hover{
 .fav-movie-item:hover .release-date{
     color:white !important;
 }
+.fav-movie-item .card-title{
+    border-left: 1px solid rgb(255, 193, 7);
+    padding: 0 30px;
+}
 .fav-movie-item:hover .card-title{
     font-size: 2.5rem !important;
     color: black !important;
     border-bottom: 1px solid black;
     margin-top: -3px !important;
+    border-left: 10px solid black;
+    border-bottom-left-radius: 15px;
+}
+
+.delete-fav{
+    transition: all 0.5s;
+}
+.delete-fav:hover{
+    color:black !important;
+    font-size: 3rem;
+}
+
+#fav-movie-card{
+    background-image: linear-gradient( rgb(255, 204, 0),rgb(0, 0, 0, 0.6)100%);
+    box-shadow: 0 1px 55px 2px rgba(228, 181, 86, 0.568);
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 10px;
 }

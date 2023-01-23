@@ -1,12 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="imdb-styles.css">
+    <script src="https://kit.fontawesome.com/a1085fbeac.js" crossorigin="anonymous"></script>
+    <title>Movie Page</title>
 </head>
-<body>
-    
+
+<body class="bg-dark">
+    <nav id="nav-bar" class="d-flex bg-darkvw-100 ">
+        <div class="nav-container m-auto d-flex align-items-center justify-content-around my-2 w-75">
+
+            <!-- logo  -->
+            <a href="homepage.html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" id="logo" alt="logo">
+            </a>
+            <!-- menu button  -->
+            <button id="menu" class="btn btn-dark ps-3 m-2 d-flex align-items-center" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                <i class="fa-solid fa-bars bg-dark mx-2"></i>
+                <span class="fw-bold">Menu</span>
+            </button>
+            <!-- off canvas menu (not functional) -->
+            <div class="offcanvas offcanvas-top bg-dark vh-100" tabindex="-1" id="offcanvasTop"
+                aria-labelledby="offcanvasTopLabel">
+                <div class="offcanvas-header w-75 m-auto">
+                    <h5 class="offcanvas-title" id="offcanvasTopLabel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" id="logo"
+                            alt="logo">
+                    </h5>
+                    <button type="button" class="btn-close"
+                        style="background-color: rgb(245,197,24); border-radius: 50%;" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body bg-dark text-warning text-center fs-1 fw-bolder">
+                    This feature was not required for this project
+                </div>
+            </div>
+
+            <!-- search field  -->
+            <input class="form-control  mt-1 d-inline-flex flex-grow-1 text-dark" id="search-field"
+                placeholder="Search IMDb" style="color: white;" />
+            <div id="suggestion-box">
+                <ul id="suggestions">
+
+                </ul>
+            </div>
+
+
+            <!-- more navigation buttons -->
+            <div id="nav-options" class="d-flex p-0">
+
+                <!-- favorites -->
+                <a id="menu" href="favorites.html" class="btn btn-dark ps-3 m-2 d-flex align-items-center">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
+                        class="ipc-icon ipc-icon--watchlist ipc-btn__icon ipc-btn__icon--pre" id="iconContext-watchlist"
+                        viewBox="0 0 24 24" fill="currentColor" role="presentation">
+                        <path
+                            d="M17 3c1.05 0 1.918.82 1.994 1.851L19 5v16l-7-3-7 3V5c0-1.05.82-1.918 1.851-1.994L7 3h10zm-4 4h-2v3H8v2h3v3h2v-3h3v-2h-3V7z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <span class="fw-bold">Favorites</span>
+                </a>
+
+                <!-- login  (not functional) -->
+                <button id="login" class="btn btn-dark ps-3 m-2 d-flex align-items-center">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="fw-bold ms-2">Login</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="d-flex flex-column justify-content-center vh-100">
+
+
+        <div id="movie-card" class="card m-3 bg-warning text-dark m-auto mt-5 w-75 mb-0">
+            <div class="row g-0 d-flex align-items-around">
+                <div class="image-container col-md-4 d-flex align-items-center">
+                    <a class="position-relative play-on-hover play" href="#">
+                        <img class="img-fluid rounded-start latest-release-image movie-poster" src="..." alt="Poster not available" />
+                    </a>
+                </div>
+                <div class="col-md-7 m-2">
+                    <div class="card-body d-flex flex-column justify-content-around align-items-around h-100">
+
+                        <i id="add-to-fav" title="Add to Favorites"
+                            class="fa-regular text-light fa-heart mt-1 mb-3 fs-3 align-self-end"></i>
+                        <h1 class="card-title movie-title">...</h1>
+                        <span class="card-text d-flex flex-column justify-content-center">
+                            <p class="movie-year text-light fs-4">...</p>
+                            <p class="movie-plot fs-5 text-light">...</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details w-75 m-auto mt-5">
+            <span class="actors text-warning fs-3 fw-bold">Actors: </span>
+            <span class=" text-light fs-4 movie-actors"> </span>
+        </div>
+
+    </main>
+
+    <script src="imdb.js"></script>
+    <script src="moviePage.js"></script>
 </body>
+
 </html>
