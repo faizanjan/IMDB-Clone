@@ -38,9 +38,10 @@ function renderFavourites(moviesToRender) {
         movieNames.push(m.Title);
     }
     deleteFav = document.getElementsByClassName("delete-fav");
+    addListenerToDeleteBtn()
 }
 var deleteFav;
-
+function addListenerToDeleteBtn(){
 for (let delBtn of deleteFav) {
     delBtn.addEventListener("click", function removeFav() {
         favorites = favorites.filter(movie => {
@@ -52,7 +53,7 @@ for (let delBtn of deleteFav) {
         renderFavourites(favorites);
     });
 }
-
+}
 // SEARCH IN FAVORITES
 
 let searchFav = document.getElementById("search-fav");
@@ -75,9 +76,5 @@ for (let g of goToMov) {
     })
 }
 
-// function goTo(THE_MOVIE){
-//     localStorage.setItem("THE_MOVIE", JSON.stringify(THE_MOVIE));
-//     // console.log(THE_MOVIE);
-// }
 
 })()
