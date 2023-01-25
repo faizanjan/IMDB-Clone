@@ -40,6 +40,8 @@ function renderFavourites(moviesToRender) {
     deleteFav = document.getElementsByClassName("delete-fav");
     addListenerToDeleteBtn()
 }
+
+//HANDLING DELETE FUNCTIONALITY
 var deleteFav;
 function addListenerToDeleteBtn(){
 for (let delBtn of deleteFav) {
@@ -55,9 +57,7 @@ for (let delBtn of deleteFav) {
 }
 }
 // SEARCH IN FAVORITES
-
 let searchFav = document.getElementById("search-fav");
-
 searchFav.addEventListener("keypress", handleSearchKeypress);
 function handleSearchKeypress(e) {
     if (e.key === "Enter") {
@@ -67,7 +67,6 @@ function handleSearchKeypress(e) {
 }
 
 // GOING TO MOVIE PAGE
-
 let goToMov = document.getElementsByClassName("goToMov");
 for (let g of goToMov) {
     g.addEventListener("click", function () {

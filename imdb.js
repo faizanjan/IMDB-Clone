@@ -1,4 +1,4 @@
-let fetchMovies = (function () {
+let funcs = (function () {
     let searchField = document.getElementById("search-field")
     let url = "http://www.omdbapi.com/?i=tt3896198&apikey=91f3949f&t=";
     let main = document.getElementsByTagName("main")[0];
@@ -135,10 +135,9 @@ let fetchMovies = (function () {
         let goToMov = document.getElementsByClassName("goToMov");
         for (let g of goToMov) {
             g.addEventListener("click", function () {
-                console.log(g.dataset.themovie);
                 localStorage.setItem("THE_MOVIE", g.dataset.themovie);
             })
         }
     }
-    return fetchMovies;
+    return {fetchMovies,handleFavBtn};
 })();
