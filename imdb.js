@@ -53,56 +53,8 @@ let fetchMovies = (function () {
 
                 main.appendChild(showResult);
 
-                // HANDLING FAVORITE BUTTON
-                let addToFavBtn = document.getElementById("add-to-fav");
-
-                addToFavBtn.addEventListener("mouseover", mouseInOnFav)
-                function mouseInOnFav() {
-                    addToFavBtn.classList.remove("fa-regular");
-                    addToFavBtn.classList.add("fa-solid");
-                }
-
-                addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
-                function mouseOutOnFav() {
-                    addToFavBtn.classList.remove("fa-solid");
-                    addToFavBtn.classList.add("fa-regular");
-                }
-
-                let isFav = false;
-                for (let m of favorites) { //check if the movie is already in favorites
-                    if ((m.imdbID === resultMovie.imdbID)) {
-                        isFav = true;
-                        addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
-                        addToFavBtn.classList.remove("fa-regular");
-                        addToFavBtn.classList.add("fa-solid");
-                    }
-                }
-
-                addToFavBtn.addEventListener("click", onClickingFav)
-                function onClickingFav() {
-                    if (!isFav) { // if the movie is not in favorites
-                        alert("Added to favorites")
-                        // CHANGING BUTTON APPEARANCE
-                        addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
-                        addToFavBtn.classList.remove("fa-regular");
-                        addToFavBtn.classList.add("fa-solid");
-
-                        // ACTUALLY ADDING TO FAVORITES
-                        favorites.push(resultMovie);
-                        localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
-                    }
-                    else { // if the movie is already in favorites
-                        // CHANGING BUTTON APPEARANCE
-                        addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
-                        addToFavBtn.classList.add("fa-regular");
-                        addToFavBtn.classList.remove("fa-solid");
-
-                        // ACTUALLY ADDING TO FAVORITES
-                        favorites = favorites.filter(movie => movie.imdbID !== resultMovie.imdbID);
-                        localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
-                    }
-                    isFav = !isFav;
-                }
+               
+                handleFavBtn(resultMovie);
 
                 addGoto(); // adding event listener to the movie result (card)
             }
@@ -118,15 +70,75 @@ let fetchMovies = (function () {
         }
     }
 
-    //////////////////////////////////// NAVIGATING TO THE MOVIE PAGE ////////////////////////////////
-    function addGoto(){
-    let goToMov = document.getElementsByClassName("goToMov");
-    for (let g of goToMov) {
-        g.addEventListener("click", function () {
-            console.log(g.dataset.themovie);
-            localStorage.setItem("THE_MOVIE", g.dataset.themovie);
-        })
+     // HANDLING FAVORITE BUTTON
+     function handleFavBtn(resultMovie) {
+        let addToFavBtn = document.getElementById("add-to-fav");
+
+        addToFavBtn.addEventListener("mouseover", mouseInOnFav)
+        function mouseInOnFav() {
+            addToFavBtn.classList.remove("fa-regular");
+            addToFavBtn.classList.add("fa-solid");
+        }
+
+        addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
+        function mouseOutOnFav() {
+            addToFavBtn.classList.remove("fa-solid");
+            addToFavBtn.classList.add("fa-regular");
+        }
+
+        let isFav = false;
+        for (let m of favorites) { //check if the movie is already in favorites
+            if ((m.imdbID === resultMovie.imdbID)) {
+                isFav = true;
+                addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
+                addToFavBtn.classList.remove("fa-regular");
+                addToFavBtn.classList.add("fa-solid");
+                addToFavBtn.setAttribute("title", "Remove from favorites");
+
+            }
+            else{
+                addToFavBtn.setAttribute("title", "Add to favorites");
+            }
+        }
+
+        addToFavBtn.addEventListener("click", onClickingFav)
+        function onClickingFav() {
+            if (!isFav) { // if the movie is not in favorites
+                alert("Added to favorites")
+                // CHANGING BUTTON APPEARANCE
+                addToFavBtn.removeEventListener("mouseout", mouseOutOnFav)
+                addToFavBtn.classList.remove("fa-regular");
+                addToFavBtn.classList.add("fa-solid");
+
+                // ACTUALLY ADDING TO FAVORITES
+                favorites.push(resultMovie);
+                localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
+                addToFavBtn.setAttribute("title", "Remove from favorites");
+            }
+            else { // if the movie is already in favorites
+                // CHANGING BUTTON APPEARANCE
+                addToFavBtn.addEventListener("mouseout", mouseOutOnFav)
+                addToFavBtn.classList.add("fa-regular");
+                addToFavBtn.classList.remove("fa-solid");
+
+                // ACTUALLY ADDING TO FAVORITES
+                favorites = favorites.filter(movie => movie.imdbID !== resultMovie.imdbID);
+                localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
+                addToFavBtn.setAttribute("title", "Add to favorites");
+            }
+            isFav = !isFav;
+        }
     }
-}
+
+    //////////////////////////////////// NAVIGATING TO THE MOVIE PAGE ////////////////////////////////
+    function addGoto() {
+        let goToMov = document.getElementsByClassName("goToMov");
+        for (let g of goToMov) {
+            g.addEventListener("click", function () {
+                console.log(g.dataset.themovie);
+                localStorage.setItem("THE_MOVIE", g.dataset.themovie);
+            })
+        }
+    }
     return fetchMovies;
 })();
