@@ -13,7 +13,7 @@
 </head>
 
 <body class="bg-dark">
-    <nav id="nav-bar" class="d-flex bg-darkvw-100 ">
+    <nav id="nav-bar" class="d-flex bg-darkvw-100 mb-5">
         <div class="nav-container m-auto d-flex align-items-center justify-content-around my-2 w-75">
 
             <!-- logo  -->
@@ -78,10 +78,9 @@
     </nav>
 
 
-    <main class="d-flex flex-column justify-content-center vh-100">
+    <main class="d-flex flex-column justify-content-center mt-5">
 
-
-        <div id="movie-card" class="card m-3 bg-warning text-dark m-auto mt-5 w-75 mb-0">
+        <div id="movie-card" class="card m-3 bg-warning text-dark m-auto mt-2 w-75 mb-0">
             <div class="row g-0 d-flex align-items-around">
                 <div class="image-container col-md-4 d-flex align-items-center">
                     <a class="position-relative play-on-hover play" href="#">
@@ -103,10 +102,73 @@
             </div>
         </div>
 
-        <div class="details w-75 m-auto mt-5">
-            <span class="actors text-warning fs-3 fw-bold">Actors: </span>
+        <!-- <div class="details w-75 m-auto mt-5">
+            <div>
+                <span class="actors text-warning fs-3 fw-bold">Actors: </span>
             <span class=" text-light fs-4 movie-actors"> </span>
-        </div>
+            </div>
+            <div>
+                <span class="genre text-warning fs-3 fw-bold">Genre: </span>
+            <span class=" text-light fs-4 movie-genre"> </span>
+            </div>
+            <div>
+                <span class="type text-warning fs-3 fw-bold">Type: </span>
+            <span class=" text-light fs-4 movie-type"> </span>
+            </div>
+            <div>
+                <span class="director text-warning fs-3 fw-bold">Director: </span>
+            <span class=" text-light fs-4 movie-director"> </span>
+            </div>
+            <div>
+                <span class="released text-warning fs-3 fw-bold">Released: </span>
+            <span class=" text-light fs-4 movie-released"> </span>
+            </div>
+            <div>
+                <span class="writers text-warning fs-3 fw-bold">Writers: </span>
+            <span class=" text-light fs-4 movie-writers"> </span>
+            </div>
+            <div>
+                <span class="runtime text-warning fs-3 fw-bold">Runtime: </span>
+            <span class=" text-light fs-4 movie-runtime"> </span>
+            </div>
+            <div>
+                <span class="rating text-warning fs-3 fw-bold">IMDb Rating: </span>
+            <span class=" text-light fs-4 movie-rating"> </span>
+            </div>
+            
+        </div> -->
+
+        <table class="details w-75 m-auto my-5 ">
+            <tr class="border-bottom">
+                <td class="actors p-3 text-warning fs-3 fw-bold text-end">Actors: &nbsp; </td>
+                <td class=" text-light fs-4 movie-actors"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="genre p-3 text-warning fs-3 fw-bold text-end">Genre:  &nbsp;  </td>
+                <td class=" text-light fs-4 movie-genre"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="type p-3 text-warning fs-3 fw-bold text-end">Type:  &nbsp; </td>
+                <td class=" text-light fs-4 movie-type"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="director p-3 text-warning fs-3 fw-bold text-end">Director:  &nbsp;  </td>
+                <td class=" text-light fs-4 movie-director"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="released p-3 text-warning fs-3 fw-bold text-end">Released:  &nbsp;  </td>
+                <td class=" text-light fs-4 movie-released"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="runtime p-3 text-warning fs-3 fw-bold text-end">Runtime:  &nbsp;  </td>
+                <td class=" text-light fs-4 movie-runtime"> </td>
+            </tr>
+            <tr class="border-bottom">
+                <td class="rating p-3 text-warning fs-3 fw-bold text-end">IMDb Rating:  &nbsp; </td>
+                <td class=" text-light fs-4 movie-rating"> </td>
+            </tr>
+            
+        </table>
 
     </main>
 
