@@ -30,7 +30,6 @@ a:hover{
 }
 
 /* SEARCH RESULT */
-
 #movie-card{
     background-image: linear-gradient( rgb(255, 204, 0),rgb(0, 0, 0, 0.6) 100%);
     box-shadow: 0 1px 55px 2px rgba(228, 181, 86, 0.568);
@@ -46,11 +45,9 @@ a:hover{
 }
 
 /* FAVORITE MOVIE PAGE */
-
 .fav-movie-item .release-date, .fav-movie-item .card-title{
     transition: all 0.5s !important;
 }
-
 .fav-movie-item:hover{
     background-image: linear-gradient(rgb(255,193,7), rgb(0, 0, 0,0.5)) !important;
     font-size: 1.3rem;
@@ -63,7 +60,7 @@ a:hover{
     padding: 0 30px;
 }
 .fav-movie-item:hover .card-title{
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     color: black !important;
     border-bottom: 1px solid black;
     margin-top: -3px !important;
@@ -84,4 +81,26 @@ a:hover{
     box-shadow: 0 1px 55px 2px rgba(228, 181, 86, 0.568);
     border: 3px solid rgb(255, 255, 255);
     border-radius: 10px;
+}
+
+/* AUTOCOMPLETE */
+#suggestion-box{
+    z-index: 2;
+    border-radius: 5px;
+    display: none;
+}
+#suggestion-list{
+    margin-left: -25px;
+}
+#suggestion{
+    border-bottom: 1px solid lightgrey;
+    list-style: none;
+    padding-left: 10px;
+}
+#suggestion:last-of-type{
+    border-bottom: none;
+}
+#suggestion:hover{
+    color: black !important;
+    background-color: lightgrey;
 }
