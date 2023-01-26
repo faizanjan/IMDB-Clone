@@ -1,13 +1,13 @@
 let funcs = (function () {
     let searchField = document.getElementById("search-field")
-    let url = "http://www.omdbapi.com/?i=tt3896198&apikey=91f3949f&t=";
+    let url = "https://www.omdbapi.com/?i=tt3896198&apikey=91f3949f&t=";
     let main = document.getElementsByTagName("main")[0];
-    let favorites = JSON.parse(localStorage.getItem("favoriteMovies"));
+    let localResponse = JSON.parse(localStorage.getItem("favoriteMovies"));
+    let favorites = (localResponse!==null ? localResponse:[]);
 
     async function fetchMovies(movieName) {
         let response = await fetch(url + movieName);
         let movie = await response.json();
-        // console.log(movie);
         return movie;
     }
 
@@ -53,7 +53,6 @@ let funcs = (function () {
 
                 main.appendChild(showResult);
 
-               
                 handleFavBtn(resultMovie);
 
                 addGoto(); // adding event listener to the movie result (card)
@@ -121,7 +120,7 @@ let funcs = (function () {
                 addToFavBtn.classList.add("fa-regular");
                 addToFavBtn.classList.remove("fa-solid");
 
-                // ACTUALLY ADDING TO FAVORITES
+                // ACTUALLY REMOVING FROM FAVORITES
                 favorites = favorites.filter(movie => movie.imdbID !== resultMovie.imdbID);
                 localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
                 addToFavBtn.setAttribute("title", "Add to favorites");

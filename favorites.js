@@ -1,5 +1,6 @@
 (function () {
-    let favorites = JSON.parse(localStorage.getItem("favoriteMovies"));
+    let localResponse = JSON.parse(localStorage.getItem("favoriteMovies"));
+    let favorites = (localResponse !== null ? localResponse : []);
 
     //RENDER FAVORITE MOVIES
     let list = document.getElementById("fav-list")
@@ -36,16 +37,19 @@
                         </div>
                         `;
             list.appendChild(li);
-            // movieNames.push(m.Title);
         }
         deleteFav = document.getElementsByClassName("delete-fav");
         addListenerToDeleteBtn()
     }
 
-    let movieNames = [];
-    for (let i of favorites) {
-        movieNames.push(i.Title);
+    let movieNames;
+    function initMovieNames(){
+        movieNames = [];
+        for (let i of favorites) {
+            movieNames.push(i.Title);
+        }
     }
+    initMovieNames();
 
     //HANDLING DELETE FUNCTIONALITY
     var deleteFav;
@@ -53,10 +57,11 @@
         for (let delBtn of deleteFav) {
             delBtn.addEventListener("click", function removeFav() {
                 favorites = favorites.filter(movie => {
-                    console.log(delBtn.dataset.imdbid, movie.imdbID);
+                    // console.log(delBtn.dataset.imdbid, movie.imdbID);
                     return delBtn.dataset.imdbid !== movie.imdbID
                 });
                 localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
+                initMovieNames();
                 alert("Movie removed from favorites")
                 renderFavourites(favorites);
             });
